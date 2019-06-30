@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container">
+		<h1>Marketing</h1>
+
+		<div class="card border-success text-center  ">
+			<div class="card-header border-success">
+				List de usuarios del Rol: <span th:text="${rol.nombre}"></span>
+			</div>
+			<div class="card-body">
+				<label></label>
+
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<thead class="bg-primary text-white">
+							<tr>
+								<th scope="col">Id</th>
+								<th scope="col">Nickname</th>
+								<th scope="col">Contraseña</th>
+								<th scope="col">Nombre</th>
+								<th scope="col">Apellido Paterno</th>
+								<th scope="col">Apellido Materno</th>
+								<th scope="col">email</th>
+								<th scope="col">Rol</th>
+								<th scope="col" colspan="3">Options</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="cur:${usuarios}">
+								<td class="text-center" th:text="${cur.id}"></td>
+								<td class="text-center" th:text="${cur.nickname}"></td>
+								<td><a>***********</a></td>
+								<td class="text-center" th:text="${cur.nombre}"></td>
+								<td class="text-center" th:text="${cur.apellidoPaterno}"></td>
+								<td class="text-center" th:text="${cur.apellidoMaterno}"></td>
+								<td class="text-center" th:text="${cur.email}">
+								<td class="text-center" th:text="${cur.rol.nombre}"></td>
+
+								<td><a th:href="@{'/usuario/edit/' + ${cur.id}}"
+									class="btn btn-info"> <i class="fas fa-edit"></i>
+								</a></td>
+								<td><a th:href="@{'/usuario/del/' + ${cur.id}}"
+									class="btn btn-danger"> <i class="fas fa-trash-alt"></i>
+								</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+			<div class="card-footer text-muted border-success">
+				<a th:href="@{/usuario/new/}" class="btn btn-success"> <i
+					class="fas fa-file"></i> Nuevo Usuario
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
+
+
+
+

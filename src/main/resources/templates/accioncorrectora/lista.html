@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container">
+		<h1>Acciones Correctoras</h1>
+
+		<div class="card border-success text-center ">
+			<div class="card-header border-success">Acciones Correctoras</div>
+			<div class="card-body">
+
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<thead class="bg-primary text-white">
+							<tr>
+								<th scope="col">Id</th>
+								<th scope="col">Descripcion</th>
+								<th scope="col">Fecha </th>
+								<th scope="col">Control</th>
+								<th scope="col">Prioridad</th>
+								<th scope="col">          </th>
+								<th scope="col">          </th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr th:each="cur:${accioncorrectoras}">
+								<td class="text-center" th:text="${cur.id}"></td>
+								<td class="text-center" th:text="${cur.descripcion}"></td>
+								<td class="text-center" th:text="${cur.fecha}"></td>
+								<td class="text-center" th:text="${cur.control}"></td>
+								<td class="text-center" th:text="${cur.prioridad}"></td>
+								<td><a th:href="@{'/accioncorrectora/del/' + ${cur.id}}">Eliminar</a></td>
+								<td><a th:href="@{'/accioncorrectora/edit/' + ${cur.id}}">Modificar</a></td>
+								
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</div>
+			<div class="card-footer text-muted border-success">
+				<a th:href="@{/accioncorrectora/new/}"
+					class="btn btn-success"> <i class="fas fa-file"></i> Nueva Accion correctora
+					
+				</a>
+			</div>
+		</div>
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
+
+
+
+
